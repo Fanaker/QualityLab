@@ -1,0 +1,10 @@
+{
+ "info":{"name":"QualityLab API Smoke Tests","description":"Petición de ejemplo para la aplicación Nova Store. Requiere API local en localhost:8000.","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+ "variable":[{"key":"baseUrl","value":"http://127.0.0.1:8000"}],
+ "item":[
+  {"name":"Health check","request":{"method":"GET","url":"{{baseUrl}}/health"},"event":[{"listen":"test","script":{"exec":["pm.test('Health OK', () => pm.response.to.have.status(200));","pm.test('Status OK', () => pm.expect(pm.response.json().status).to.eql('ok'));"],"type":"text/javascript"}}]},
+  {"name":"Catálogo","request":{"method":"GET","url":"{{baseUrl}}/api/shop/products"},"event":[{"listen":"test","script":{"exec":["pm.test('Hay productos', () => pm.expect(pm.response.json().length).to.be.above(0));"],"type":"text/javascript"}}]},
+  {"name":"Cotización con cupón","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"sku\":\"SKU-104\",\"quantity\":2,\"coupon\":\"BIENVENIDO10\"}"},"url":"{{baseUrl}}/api/shop/quote"},"event":[{"listen":"test","script":{"exec":["pm.test('Total correcto', () => pm.expect(pm.response.json().total).to.eql(161.82));"],"type":"text/javascript"}}]},
+  {"name":"Rechazo de cantidad inválida","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"sku\":\"SKU-104\",\"quantity\":0}"},"url":"{{baseUrl}}/api/shop/quote"},"event":[{"listen":"test","script":{"exec":["pm.test('422 en payload inválido', () => pm.response.to.have.status(422));"],"type":"text/javascript"}}]}
+ ]
+}
