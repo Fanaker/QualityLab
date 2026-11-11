@@ -1,6 +1,6 @@
 # QualityLab · QA Command Center
 
-**Proyecto de portafolio #16 · Quality Assurance / Software Testing**
+**Quality Assurance · Software Testing · Automatización**
 
 Sistema de gestión de calidad para una tienda digital ficticia, con dashboard, biblioteca de casos, gestión de defectos, ejecuciones reproducibles y una pequeña **API de comercio que sirve como sistema bajo prueba (SUT)**. La aplicación se ejecuta en local, sin cuentas ni servicios externos.
 
@@ -99,4 +99,6 @@ Más información: [plan de pruebas](docs/TEST_PLAN.md) y [estado verificado](PR
 
 ---
 
-**Proyecto de demostración para portafolio · Fanaker Labs · 2026**
+## Autor y licencia
+
+**Fanaker Labs** · Proyecto personal de aseguramiento de calidad, pruebas automatizadas y gestión de defectos. Código bajo licencia [MIT](LICENSE).
